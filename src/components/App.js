@@ -1,52 +1,52 @@
-import React, { useState } from 'react';
-import questionsData from '../questions.json';
-import styles from '../assets/styles/App.module.css';
-import ProgressBar from './ProgressBar';
-import QuestionCard from './QuestionCard';
-import OptionsContainer from './OptionsContainer';
-import ScoreBar from './ScoreBar';
+import React, { useState } from 'react'
+import questionsData from '../questions.json'
+import styles from '../assets/styles/App.module.css'
+import ProgressBar from './ProgressBar'
+import QuestionCard from './QuestionCard'
+import OptionsContainer from './OptionsContainer'
+import ScoreBar from './ScoreBar'
 
 const App = () => {
-  const [HasStarted, setHasStarted] = useState(false);
-  const [IsCompleted, setIsCompleted] = useState(false);
-  const [userAnswer, setUserAnswer] = useState('');
-  const [score, setScore] = useState(0);
+  const [HasStarted, setHasStarted] = useState(false)
+  const [IsCompleted, setIsCompleted] = useState(false)
+  const [userAnswer, setUserAnswer] = useState('')
+  const [score, setScore] = useState(0)
   const [questionDetails, setQuestionDetails] = useState({
     questionId: 0,
     questionTotal: questionsData.length,
     questions: questionsData,
-    correctAnswer: '',
-  });
+    correctAnswer: ''
+  })
 
   const handleOptionClick = (e) => {
-    e.preventDefault();
-    setUserAnswer(e.target.value);
-    const { questions, questionId } = questionDetails;
+    e.preventDefault()
+    setUserAnswer(e.target.value)
+    const { questions, questionId } = questionDetails
     const correctAnswer = decodeURIComponent(
       questions[questionId].correct_answer
-    );
-    setQuestionDetails({ ...questionDetails, correctAnswer });
-  };
+    )
+    setQuestionDetails({ ...questionDetails, correctAnswer })
+  }
 
   const handleNextQuestionClick = (e) => {
-    e.preventDefault();
+    e.preventDefault()
     if (userAnswer === questionDetails.correctAnswer) {
-      setScore((prevScore) => prevScore + 1);
+      setScore((prevScore) => prevScore + 1)
     }
 
-    const nextQuestionId = questionDetails.questionId + 1;
+    const nextQuestionId = questionDetails.questionId + 1
     if (questionDetails.questionId + 1 === questionDetails.questionTotal) {
-      setIsCompleted(true);
-      setHasStarted(false);
+      setIsCompleted(true)
+      setHasStarted(false)
     } else {
-      setQuestionDetails({ ...questionDetails, questionId: nextQuestionId });
+      setQuestionDetails({ ...questionDetails, questionId: nextQuestionId })
     }
-    setUserAnswer('');
-  };
+    setUserAnswer('')
+  }
 
   const handleStartClick = () => {
-    setHasStarted(true);
-  };
+    setHasStarted(true)
+  }
 
   return (
     <div className={styles.app}>
@@ -94,7 +94,7 @@ const App = () => {
         )}
       </>
     </div>
-  );
-};
+  )
+}
 
-export default App;
+export default App
