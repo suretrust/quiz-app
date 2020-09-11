@@ -7,8 +7,8 @@ import OptionsContainer from './OptionsContainer'
 import ScoreBar from './ScoreBar'
 
 const App = () => {
-  const [HasStarted, setHasStarted] = useState(false)
-  const [IsCompleted, setIsCompleted] = useState(false)
+  const [hasStarted, setHasStarted] = useState(false)
+  const [isCompleted, setIsCompleted] = useState(false)
   const [userAnswer, setUserAnswer] = useState('')
   const [score, setScore] = useState(0)
   const [questionDetails, setQuestionDetails] = useState({
@@ -51,11 +51,11 @@ const App = () => {
   return (
     <div className={styles.app}>
       <>
-        {HasStarted && !IsCompleted && (
+        {hasStarted && !isCompleted && (
           <ProgressBar questionDetails={questionDetails} />
         )}
         <main className={styles.container}>
-          {!HasStarted && !IsCompleted && (
+          {!hasStarted && !isCompleted && (
             <div className={styles.landing}>
               <h1>Welcome to Quizio.</h1>
               <h3>
@@ -67,7 +67,7 @@ const App = () => {
               </button>
             </div>
           )}
-          {HasStarted && !IsCompleted && (
+          {hasStarted && !isCompleted && (
             <>
               <QuestionCard questionDetails={questionDetails} />
               <OptionsContainer
@@ -78,7 +78,7 @@ const App = () => {
               />
             </>
           )}
-          {IsCompleted && (
+          {isCompleted && (
             <div className={styles.scoreCard}>
               <h2>You have completed the , your score:</h2>
               <h3 className={styles.score}>{`${
@@ -87,7 +87,7 @@ const App = () => {
             </div>
           )}
         </main>
-        {HasStarted && !IsCompleted && (
+        {hasStarted && !isCompleted && (
           <footer className={styles.footer}>
             <ScoreBar score={score} questionDetails={questionDetails} />
           </footer>
