@@ -80,7 +80,7 @@ const App = () => {
           )}
           {isCompleted && (
             <div className={styles.scoreCard}>
-              <h2>You have completed the , your score:</h2>
+              <h2>You have completed the Quiz, your score:</h2>
               <h3 className={styles.score}>{`${
                 (score / questionDetails.questionTotal) * 100
               }%`}</h3>
