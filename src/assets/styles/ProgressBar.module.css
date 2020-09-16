@@ -1,0 +1,13 @@
+.progessBar {
+    width: 98%;
+    height: 20px;
+    display: flex;
+    max-width: 700px;
+    border-radius: 10px;
+    border: 1px solid rgb(216, 216, 216);
+}
+
+.currentProgess {
+    background-color: rgb(83, 83, 83);
+    border-radius: 10px;
+}
